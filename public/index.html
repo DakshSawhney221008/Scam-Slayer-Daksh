@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SCam Slayer - Cybersecurity Awareness Quiz</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="sounds.js"></script>
+    </head>
+
+    <body>
+        <!-- Answer Popup -->
+        <div id="answerPopup" class="answer-popup">
+            <div class="popup-content">
+                <span class="popup-player"></span>
+                <span class="popup-answer"></span>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Initial Screen -->
+            <div id="initialScreen" class="screen active">
+                <h1>🛡️ SCam Slayer</h1>
+                <p class="game-subtitle">Cybersecurity Awareness Quiz</p>
+                <div class="form-group">
+                    <label for="nicknameInput">Enter your nickname:</label>
+                    <input type="text" id="nicknameInput" placeholder="Your nickname" maxlength="20">
+                </div>
+                <div class="button-group">
+                    <button id="hostBtn" class="btn btn-primary">🎮 Host Game</button>
+                    <button id="joinBtn" class="btn btn-secondary">🔗 Join Game</button>
+                </div>
+                <div class="sound-controls">
+                    <button id="soundToggle" class="btn-sound">🔊 Sound ON</button>
+                </div>
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+
+            <!-- Waiting Room -->
+            <div id="waitingRoom" class="screen">
+                <h2>🏠 Waiting Room</h2>
+                <div id="playersList" class="players-list"></div>
+                <button id="startGameBtn" class="btn btn-success" style="display: none;">🚀 Start Quiz</button>
+                <div id="waitingMessage" class="waiting-message">Waiting for host to start the game...</div>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div id="quizScreen" class="screen">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <div id="questionNumber" class="question-number"></div>
+                        <div id="progressIndicator" class="progress-indicator">0/0 answered</div>
+                    </div>
+                    <div id="timer" class="timer">60</div>
+                </div>
+                <div id="questionText" class="question-text"></div>
+                <div id="optionsContainer" class="options-container"></div>
+                <div id="waitingForOthers" class="waiting-message" style="display: none;">
+                    Waiting for other players to answer...
+                </div>
+            </div>
+
+            <!-- Leaderboard Screen -->
+            <div id="leaderboardScreen" class="screen">
+                <h2>📊 Leaderboard</h2>
+                <div id="leaderboardContainer" class="leaderboard-container"></div>
+                <button id="nextQuestionBtn" class="btn btn-primary" style="display: none;">➡️ Next Question</button>
+                <div id="hostWaitingMessage" class="waiting-message" style="display: none;">
+                    Waiting for host to continue...
+                </div>
+            </div>
+
+            <!-- Game Over Screen -->
+            <div id="gameOverScreen" class="screen">
+                <h2>🎉 Game Over!</h2>
+                <div id="finalLeaderboard" class="leaderboard-container"></div>
+                <button id="playAgainBtn" class="btn btn-success">🔄 Play Again</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+
+</html>
